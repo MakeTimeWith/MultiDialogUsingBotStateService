@@ -12,13 +12,12 @@ namespace MultiDialogSample.Dialogs
     public class HotelDialog : IDialog<object>
     {
         string hotelLocation;
-        public HotelDialog(string location)
-        {
-            hotelLocation = location;
-        }
 
         public async Task StartAsync(IDialogContext context)
         {
+            //Retreive UserData
+            context.UserData.TryGetValue("destinationKey", out hotelLocation);
+
             await context.PostAsync("Welcome to HotelDialog");
             if (hotelLocation == null)
             {

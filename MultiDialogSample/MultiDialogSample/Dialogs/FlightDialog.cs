@@ -20,6 +20,7 @@ namespace MultiDialogSample.Dialogs
         {
             var reply = await result;
             destination = reply.Text;
+            context.UserData.SetValue("destinationKey", destination);
             await context.PostAsync($"OK you want to go {destination}.Where is the origin place?");
             context.Wait(BookFlight);
         }
@@ -28,7 +29,7 @@ namespace MultiDialogSample.Dialogs
         {
             var reply = await result;
             await context.PostAsync($"OK, booked the flight from {reply.Text} to {destination}. Have a nice trip :)");
-            context.Done<object>(destination);
+            context.Done<object>(null);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace MultiDialogSample.Dialogs
                     break;
                 case HotelMenu:
                     //Call child dialog with data
-                    context.Call(new HotelDialog(location), ResumeAfterDialog);
+                    context.Call(new HotelDialog(), ResumeAfterDialog);
                     break;
             }
         }
